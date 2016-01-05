@@ -34,7 +34,7 @@ module.exports = function (config) {
 
 		// But if it's a buffer...!
 		if (file.isBuffer()) {
-			var path = (config.prefix ? config.prefix + "/" : "") + file.path.replace(file.base, "");
+			var path = (config.prefix ? config.prefix + "/" : "") + file.path.replace(/\\/g,"/").split("/").join('/').replace(file.base.replace(/\\/g,"/").split("/").join('/'), "");
 			var segments = path.replace(/\\/g,"/").split("/");
 			var parent = directoryStructure;
 
